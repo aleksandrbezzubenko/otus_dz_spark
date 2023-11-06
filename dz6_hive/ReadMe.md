@@ -78,3 +78,11 @@
     GROUP BY ap.name 
     ORDER BY avg_depdelay, avg_arrdelay DESC;
 
+### Задание 4. В каких странах совершается больше всего внутренних рейсов.
+    CREATE VIEW otus.max_orders_in_country AS 
+    SELECT fl.OriginAirportID, fl.DestAirportID, fl.originairportid 
+    FROM otus.flights fl 
+    JOIN otus.airports ap ON(fl.originairportid = ap.airport_id) 
+    WHERE fl.OriginAirportID = fl.DestAirportID 
+    GROUP BY ap.airport_id 
+    ORDER BY cnt_at_day DESC;
